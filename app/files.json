@@ -29,6 +29,7 @@
 
     "src/index.html",
 
+    "src/app/routes.js",
     "src/app/index.js",
 
     "src/app/main/main.controller.js",

@@ -13,12 +13,22 @@ module.exports = function () {
     return module.module;
   });
 
+  this.ngRouterModules = [this.props.router.module];
+
+  this.ngRouterModulesDependencies = _.chain(this.ngRouterModules)
+    .filter(_.isString)
+    .map(function (dependency) {
+      return '\'' + dependency + '\'';
+    })
+    .valueOf()
+    .join(', ');
+
   ngModules = _.flatten([
     ngModules,
     this.props.resource.module,
-    this.props.router.module,
     this.props.ui.module,
-    this.props.bootstrapComponents.module
+    this.props.bootstrapComponents.module,
+    this.appName + '.Routes'
   ]);
 
   this.modulesDependencies = _.chain(ngModules)
